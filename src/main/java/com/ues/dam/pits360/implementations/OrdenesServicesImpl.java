@@ -3,6 +3,7 @@ package com.ues.dam.pits360.implementations;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Service
+@Profile("jpa")
 @RequiredArgsConstructor
 public class OrdenesServicesImpl implements OrdenesServices {
 

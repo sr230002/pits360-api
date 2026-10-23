@@ -3,6 +3,7 @@ package com.ues.dam.pits360.implementations;
 import java.util.Map;
 import java.util.UUID;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -35,6 +36,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Service
+@Profile("jpa")
 @RequiredArgsConstructor
 public class AuthServicesImpl implements AuthServices {
 

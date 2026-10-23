@@ -7,6 +7,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -48,4 +50,15 @@ public class Taller {
 	@NotNull(groups = {OnCreate.class, OnUpdate.class}, message = "El rating es obligatorio")
 	@PositiveOrZero(groups = {OnCreate.class, OnUpdate.class})
 	private Double rating;
+
+	/** Coordenadas del taller, opcionales: se rellenan cuando el cliente las pasa. */
+	@Column
+	@DecimalMin(value = "-90.0", groups = {OnCreate.class, OnUpdate.class})
+	@DecimalMax(value = "90.0", groups = {OnCreate.class, OnUpdate.class})
+	private Double latitud;
+
+	@Column
+	@DecimalMin(value = "-180.0", groups = {OnCreate.class, OnUpdate.class})
+	@DecimalMax(value = "180.0", groups = {OnCreate.class, OnUpdate.class})
+	private Double longitud;
 }

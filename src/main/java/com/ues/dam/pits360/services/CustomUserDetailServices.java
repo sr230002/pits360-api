@@ -1,5 +1,6 @@
 package com.ues.dam.pits360.services;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -15,6 +16,7 @@ import lombok.RequiredArgsConstructor;
  * El bean es singleton, así que no guarda estado entre peticiones.
  */
 @Service
+@Profile("jpa")
 @RequiredArgsConstructor
 public class CustomUserDetailServices implements UserDetailsService {
 

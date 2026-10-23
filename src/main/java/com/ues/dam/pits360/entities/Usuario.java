@@ -42,4 +42,16 @@ public class Usuario {
 	/** {@code cliente | tecnico | admin}. */
 	@Column(nullable = false)
 	private String rol;
+
+	/** Teléfono de contacto; opcional. */
+	@Column(length = 40)
+	private String telefono;
+
+	/** Ciudad de residencia; opcional. */
+	@Column(length = 120)
+	private String ciudad;
+
+	/** URL de la foto de perfil (Cloudinary); opcional. */
+	@Column(length = 512)
+	private String fotoUrl;
 }

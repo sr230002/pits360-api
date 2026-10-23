@@ -3,17 +3,21 @@ spring:
     import: optional:file:./.env[.properties]
   application:
     name: dam235-pits360-api
-  datasource:
-    url: ${SPRING_DATASOURCE_URL}
-    username: ${SPRING_DATASOURCE_USERNAME}
-    password: ${SPRING_DATASOURCE_PASSWORD}
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    open-in-view: false
-    show-sql: false
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  output:
+    ansi:
+      enabled: always
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java,src/main/resources
+  autoconfigure:
+    # Por defecto la API NO usa Postgres: el stack JPA queda apagado y solo
+    # viven los servicios Firestore. Con el perfil `jpa` se reactiva (ver
+    # application-jpa.yml, que limpia esta lista).
+    exclude:
+      - org.springframework.boot.jdbc.autoconfigure.DataSourceAutoConfiguration
+      - org.springframework.boot.hibernate.autoconfigure.HibernateJpaAutoConfiguration
+      - org.springframework.boot.data.jpa.autoconfigure.DataJpaRepositoriesAutoConfiguration
   servlet:
     multipart:
       max-file-size: 6MB
@@ -33,3 +37,17 @@ app:
   jwt:
     secret: ${JWT_SECRET}
     expiration-ms: 1800000
+logging:
+  charset:
+    console: UTF-8
+  pattern:
+    console: "%clr([PITS360-API]%d{yyyy-MM-dd HH:mm:ss.SSS}-[%-5level]-[%thread]-[%logger{36}]>>[%msg]%n){fatal=red,error=red,warn=yellow,info=green,debug=cyan,trace=magenta}"
+  level:
+    root: INFO
+    com.ues.dam: INFO
+    com.ues.dam.integration.firebase: INFO
+    org.springframework.security: WARN
+    org.springframework.web: WARN
+    org.springframework.boot.StartupInfoLogger: INFO
+    org.springframework.boot.tomcat.TomcatWebServer: INFO
+    com.zaxxer.hikari: WARN
