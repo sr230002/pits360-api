@@ -25,4 +25,7 @@ public class RegisterDTO {
 	@NotBlank(groups = OnCreate.class, message = "La contraseña es obligatoria")
 	@Size(min = 6, groups = OnCreate.class, message = "La contraseña debe tener al menos 6 caracteres")
 	private String password;
+
+	/** Teléfono (opcional). */
+	private String telefono;
 }

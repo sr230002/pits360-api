@@ -10,7 +10,7 @@ import com.ues.dam.pits360.entities.Usuario;
  * <p>
  * ADR-10: sin capa DTO; la entidad {@link Usuario} entra y sale tal cual
  * (con {@code passwordHash} oculto por {@code @JsonIgnore}). Los fallos se
- * seA�alan con {@link com.ues.dam.pits360.exceptions.ApiException}.
+ * señalan con {@link com.ues.dam.pits360.exceptions.ApiException}.
  */
 public interface UsuariosServices {
 
@@ -18,7 +18,7 @@ public interface UsuariosServices {
 	 * Lista usuarios. Si {@code rol} no es null, filtra por rol
 	 * (cliente|tecnico|admin).
 	 *
-	 * @throws com.ues.dam.pits360.exceptions.ApiException 400 si el rol es invA�lido
+	 * @throws com.ues.dam.pits360.exceptions.ApiException 400 si el rol es inválido
 	 */
 	List<Usuario> getAll(String rol);
 

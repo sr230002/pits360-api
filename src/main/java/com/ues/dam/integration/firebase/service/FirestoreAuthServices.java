@@ -92,6 +92,7 @@ public class FirestoreAuthServices implements AuthServices {
 				.nombre(dto.getNombre().trim())
 				.email(email)
 				.passwordHash(passwordEncoder.encode(dto.getPassword()))
+				.telefono(dto.getTelefono())
 				.rol(ROL_DEFAULT)
 				.build();
 

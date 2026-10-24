@@ -74,7 +74,10 @@ public class FirebaseConfig {
 		}
 	}
 
-	@Bean
+	// destroyMethod="" : Spring NO cierra Firestore al destruir el contexto.
+	// Con devtools restart el contexto viejo cerraba la instancia compartida y
+	// el nuevo recibia el mismo cliente ya cerrado ("already closed").
+	@Bean(destroyMethod = "")
 	public Firestore firestore() {
 		return FirestoreClient.getFirestore(firebaseApp);
 	}
